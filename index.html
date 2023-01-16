@@ -30,7 +30,17 @@
         <div class="grid">
             
             <div class="row">
-                <div class="text-center">Tic Tac Toe Game</div>
+                <h1 class="text-center">Tic Tac Toe Game</h1>
+
+                <form class="text-center">
+                    <label>Name 1(X)</label>
+                    <input type="Text" id="name1">
+                </form>
+                <form class="text-center">
+                    <label>Name 2(O)</label>
+                    <input type="Text" id="name2">
+                </form>
+
                 <div class="col-3"></div>
 
                 <div class="col-2 text-center border-3 rounded">
@@ -102,7 +112,8 @@
 
                 <div class="col-3"></div>
 
-                <div id="turnIndicator" class="text-center">It is currently X's turn.</div>
+                <h2 id="turnIndicator" class="text-center">It is currently X's turn.</h2>
+                <h1 id="winIndicator" class="text-center">There is no winner yet.</h1>
             </div>
 
 
@@ -113,72 +124,106 @@
     
     <script>
         const one = document.getElementById("1");
-        var cellStatus = new Array(3);
         var turn = 1;
 
-        for(var i = 0; i < cellStatus.length(); i++){
-            cellStatus[i] = new Array(3);
-        }
-
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                gfg[i][j] = 0;
-            }
-        }
-
-        // one.addEventListener('click', (event) => {
-            
-        // });
-        
         function changeImage(imageId) {
-            console.log(imageId);
             // console.log(document.getElementById(imageId).src);
 
             if(document.getElementById(imageId).src.includes("white.png") && turn == 1){
                 document.getElementById(imageId).src="x.png";
-                changeCellArray(imageId, 1)
-
-                for (var i = 0; i < 3; i++) {
-                    for (var j = 0; j < 3; j++) {
-                        console.log(gfg[i][j]);
-                    }
-                }
+                winCondition()
+                
             } else if(document.getElementById(imageId).src.includes("white.png") && turn == 2){
                 document.getElementById(imageId).src="o.png";
-                changeCellArray(imageId, 2)
+                winCondition()
             }
             
             if(turn == 1){
+                console.log("run")
                 turn = 2;
-                turnIndicator.innerHTML = "It is currently O's turn."
+                turnIndicator.innerHTML = "It is currently " + document.getElementById("name1") + "'s turn."
             } else if (turn == 2){
                 turn = 1;
-                turnIndicator.innerHTML = "It is currently X's turn."
+                turnIndicator.innerHTML = "It is currently " + document.getElementById("name2") + "'s turn."
             }
+
+
         }
 
-        function changeCellArray(cellId, cellValue){
-            if(cellId == 1){
-                cellStatus[0][0] = cellValue;
-            } else if (cellId == 2) {
-                cellStatus[0][1] = cellValue;
-            } else if (cellId == 3) {
-                cellStatus[0][2] = cellValue;
-            } else if (cellId == 4) {
-                cellStatus[1][0] = cellValue;
-            } else if (cellId == 5) {
-                cellStatus[1][1] = cellValue;
-            } else if (cellId == 6) {
-                cellStatus[1][2] = cellValue;
-            } else if (cellId == 7) {
-                cellStatus[2][0] = cellValue;
-            } else if (cellId == 8) {
-                cellStatus[2][1] = cellValue;
-            } else if (cellId == 9) {
-                cellStatus[2][2] = cellValue;
+        function winCondition() {
+            // x
+            // x
+            // x
+            if (document.getElementById(1).src.includes("x.png") && document.getElementById(4).src.includes("x.png") && document.getElementById(7).src.includes("x.png")) {
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(2).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(8).src.includes("x.png")) {
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(3).src.includes("x.png") && document.getElementById(6).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(1).src.includes("x.png") && document.getElementById(2).src.includes("x.png") && document.getElementById(3).src.includes("x.png")) {
+                // x x x
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(4).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(6).src.includes("x.png")) {
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(7).src.includes("x.png") && document.getElementById(8).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(1).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
+                // x
+                //   x
+                //     x
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(3).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(7).src.includes("x.png")) {
+                //     x
+                //   x
+                // x
+                winIndicator.innerHTML = "X has won the game!"
+
+            } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(4).src.includes("o.png") && document.getElementById(7).src.includes("o.png")) {
+                // o 
+                // o 
+                // o
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(2).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(8).src.includes("o.png")) {
+                winIndicator.innerHTML = "O has won the game!"
+                console.log("win")
+            } else if (document.getElementById(3).src.includes("o.png") && document.getElementById(6).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(2).src.includes("o.png") && document.getElementById(3).src.includes("o.png")) {
+                // o o o
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(4).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(6).src.includes("o.png")) {
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(7).src.includes("o.png") && document.getElementById(8).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
+                // o
+                //   o
+                //     o
+                winIndicator.innerHTML = "O has won the game!"
+
+            } else if (document.getElementById(3).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(7).src.includes("o.png")) {
+                //     o
+                //   o
+                // o
+                winIndicator.innerHTML = "O has won the game!"
+
             }
+
         }
 
+      
     </script>
 
 </body>
