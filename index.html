@@ -28,36 +28,44 @@
 <body>
     <div class="vertical-center">
         <div class="grid">
-            
             <div class="row">
                 <h1 class="text-center">Tic Tac Toe Game</h1>
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <form class="text-center" onSubmit="inputName()">
+                        <label id="labelName1" class="h3">Player 1(X)</label>
+                        <input id="name1" class="form-control form-control-lg" type="text" placeholder="Input your name">
+                        
+                        <label id="labelName2" class="h3">Player 2(O)</label>
+                        <input id="name2" class="form-control form-control-lg" type="text" placeholder="Input your name">
+                       
+                        <input type="submit" value="Submit" class="btn btn-warning" id="submitButton">
+                    </form>
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
 
-                <form class="text-center">
-                    <label>Name 1(X)</label>
-                    <input type="Text" id="name1">
-                </form>
-                <form class="text-center">
-                    <label>Name 2(O)</label>
-                    <input type="Text" id="name2">
-                </form>
-
-                <div class="col-3"></div>
-
-                <div class="col-2 text-center border-3 rounded">
+            <div class="row mt-4">
+                <div class="col-3">
+                </div>
+                
+                <div class="col-2 text-center">
                         <a style="cursor:pointer" onclick="changeImage('1')">
-                            <img src="white.png" id="1" class="img-thumbnail">
+                            <img src="white.png" id="1" class="img-thumbnail border border-3 border-info rounded">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('2')">
-                        <img src="white.png" id="2" class="img-thumbnail">
+                        <img src="white.png" id="2" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('3')">
-                        <img src="white.png" id="3" class="img-thumbnail">
+                        <img src="white.png" id="3" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
@@ -69,19 +77,19 @@
 
                 <div class="col-2 text-center border-3 rounded">
                         <a style="cursor:pointer" onclick="changeImage('4')">
-                            <img src="white.png" id="4" class="img-thumbnail">
+                            <img src="white.png" id="4" class="img-thumbnail border border-3 border-info rounded">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('5')">
-                        <img src="white.png" id="5" class="img-thumbnail">
+                        <img src="white.png" id="5" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('6')">
-                        <img src="white.png" id="6" class="img-thumbnail">
+                        <img src="white.png" id="6" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
@@ -94,29 +102,29 @@
 
                 <div class="col-2 text-center border-3 rounded">
                         <a style="cursor:pointer" onclick="changeImage('7')">
-                            <img src="white.png" id="7" class="img-thumbnail">
+                            <img src="white.png" id="7" class="img-thumbnail border border-3 border-info rounded">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('8')">
-                        <img src="white.png" id="8" class="img-thumbnail">
+                        <img src="white.png" id="8" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('9')">
-                        <img src="white.png" id="9" class="img-thumbnail">
+                        <img src="white.png" id="9" class="img-thumbnail border border-3 border-info rounded">
                     </a>
                 </div>
 
                 <div class="col-3"></div>
-
-                <h2 id="turnIndicator" class="text-center">It is currently X's turn.</h2>
-                <h1 id="winIndicator" class="text-center">There is no winner yet.</h1>
             </div>
 
-
+            <div class="row mt-4">
+                <h2 id="turnIndicator" class="text-center">Please enter your names in the textboxes.</h2>
+                <h1 id="winIndicator" class="text-center"></h1>
+            </div>
         </div>
     </div>
 
@@ -127,26 +135,34 @@
         var turn = 1;
 
         function changeImage(imageId) {
-            // console.log(document.getElementById(imageId).src);
-
-            if(document.getElementById(imageId).src.includes("white.png") && turn == 1){
+            console.log(document.getElementById(imageId).src);
+            
+            if(document.getElementById(imageId).src.includes("white.png") && turn % 2 == 1){
+                turnIndicator.innerHTML = "It is currently " + playerName2 + "'s turn."
                 document.getElementById(imageId).src="x.png";
                 winCondition()
-                
-            } else if(document.getElementById(imageId).src.includes("white.png") && turn == 2){
+                turn += 1;
+      
+            } else if(document.getElementById(imageId).src.includes("white.png") && turn % 2 == 0){
+                turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn."
                 document.getElementById(imageId).src="o.png";
                 winCondition()
-            }
-            
-            if(turn == 1){
-                console.log("run")
-                turn = 2;
-                turnIndicator.innerHTML = "It is currently " + document.getElementById("name1") + "'s turn."
-            } else if (turn == 2){
-                turn = 1;
-                turnIndicator.innerHTML = "It is currently " + document.getElementById("name2") + "'s turn."
+                turn += 1;
             }
 
+        }
+
+        function inputName(){
+            event.preventDefault()
+            playerName1 = document.getElementById("name1").value
+            playerName2 = document.getElementById("name2").value
+            
+            document.getElementById("submitButton").classList.add("invisible")
+
+            labelName1.innerHTML = "Player 1: " + playerName1
+            labelName2.innerHTML = "Player 2: " + playerName2
+            document.getElementById("name1").classList.add("invisible")
+            document.getElementById("name2").classList.add("invisible")
 
         }
 
@@ -155,70 +171,72 @@
             // x
             // x
             if (document.getElementById(1).src.includes("x.png") && document.getElementById(4).src.includes("x.png") && document.getElementById(7).src.includes("x.png")) {
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(2).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(8).src.includes("x.png")) {
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(3).src.includes("x.png") && document.getElementById(6).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(1).src.includes("x.png") && document.getElementById(2).src.includes("x.png") && document.getElementById(3).src.includes("x.png")) {
                 // x x x
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(4).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(6).src.includes("x.png")) {
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(7).src.includes("x.png") && document.getElementById(8).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(1).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(9).src.includes("x.png")) {
                 // x
                 //   x
                 //     x
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(3).src.includes("x.png") && document.getElementById(5).src.includes("x.png") && document.getElementById(7).src.includes("x.png")) {
                 //     x
                 //   x
                 // x
-                winIndicator.innerHTML = "X has won the game!"
+                winIndicator.innerHTML = playerName1 + " has won the game!"
 
             } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(4).src.includes("o.png") && document.getElementById(7).src.includes("o.png")) {
                 // o 
                 // o 
                 // o
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(2).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(8).src.includes("o.png")) {
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
                 console.log("win")
             } else if (document.getElementById(3).src.includes("o.png") && document.getElementById(6).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(2).src.includes("o.png") && document.getElementById(3).src.includes("o.png")) {
                 // o o o
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(4).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(6).src.includes("o.png")) {
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(7).src.includes("o.png") && document.getElementById(8).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(1).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(9).src.includes("o.png")) {
                 // o
                 //   o
                 //     o
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
             } else if (document.getElementById(3).src.includes("o.png") && document.getElementById(5).src.includes("o.png") && document.getElementById(7).src.includes("o.png")) {
                 //     o
                 //   o
                 // o
-                winIndicator.innerHTML = "O has won the game!"
+                winIndicator.innerHTML = playerName2 + " has won the game!"
 
+            } else if (turn == 9){
+                winIndicator.innerHTML = "The game is a tie."
             }
 
         }
