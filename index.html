@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe Game</title>
+    <title>Tic Tac Toe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         .vertical-center {
@@ -26,50 +26,63 @@
     </style>
 </head>
 <body>
-    <div class="vertical-center">
+    <div class="vertical-center bg-dark">
         <div class="grid">
             <div class="row">
-                <h1 class="text-center">Tic Tac Toe Game</h1>
-                <h2 id="turnIndicator" class="text-center">Please enter your names in the textboxes.</h2>
-
-                <div class="col-4">
-                </div>
-                    <div class="col-2">
-                        <label id="labelName1" class="h3">Player 1(X)</label>
-                        <input id="name1" class="form-control" type="text" placeholder="Input your name">
-                        
-                        
-                        
-                    </div>
-                    <div class="col-2">
-                        <label id="labelName2" class="h3">Player 2(O)</label>
-                        <input id="name2" class="form-control" type="text" placeholder="Input your name">
-                        
-                    </div>
-                    <div class="col-4">
-                        <button id="submitButton" type="submit" class="btn btn-primary" onclick="inputName()">Submit</button>
-                    </div>
+                <h1 class="text-center text-info">Tic Tac Toe</h1>
             </div>
 
-            <div class="row mt-4">
+            <div class="row">
+                <div class="col-3">
+                </div>
+                
+                <div class="col-3">
+                    <label id="labelName1" class="h3 text-info">Player 1(X)</label>
+                </div>
+                
+                <div class="col-3">
+                    <label id="labelName2" class="h3 text-info">Player 2(O)</label>
+                </div>
+                <div class="col-3">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                </div>
+
+                <div class="col-3">
+                    <input id="name1" class="form-control" type="text" placeholder="Input your name">
+                </div>
+
+                <div class="col-3">
+                    <input id="name1" class="form-control" type="text" placeholder="Input your name">
+                </div>
+                
+                <div class="col-3">
+                    <button id="submitButton" type="submit" class="btn btn-info" onclick="inputName()">Submit</button>
+                </div>
+            </div>
+
+            <div class="row mt-5">
                 <div class="col-3">
                 </div>
                 
                 <div class="col-2 text-center">
                         <a style="cursor:pointer" onclick="changeImage('1')">
-                            <img src="white.png" id="1" class="img-thumbnail border border-3 border-info rounded">
+                            <img src="blank.png" id="1" class="img-thumbnail border border-3 border-info rounded bg-dark">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('2')">
-                        <img src="white.png" id="2" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="2" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('3')">
-                        <img src="white.png" id="3" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="3" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
@@ -81,19 +94,19 @@
 
                 <div class="col-2 text-center border-3 rounded">
                         <a style="cursor:pointer" onclick="changeImage('4')">
-                            <img src="white.png" id="4" class="img-thumbnail border border-3 border-info rounded">
+                            <img src="blank.png" id="4" class="img-thumbnail border border-3 border-info rounded bg-dark">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('5')">
-                        <img src="white.png" id="5" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="5" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('6')">
-                        <img src="white.png" id="6" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="6" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
@@ -106,19 +119,19 @@
 
                 <div class="col-2 text-center border-3 rounded">
                         <a style="cursor:pointer" onclick="changeImage('7')">
-                            <img src="white.png" id="7" class="img-thumbnail border border-3 border-info rounded">
+                            <img src="blank.png" id="7" class="img-thumbnail border border-3 border-info rounded bg-dark">
                         </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('8')">
-                        <img src="white.png" id="8" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="8" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('9')">
-                        <img src="white.png" id="9" class="img-thumbnail border border-3 border-info rounded">
+                        <img src="blank.png" id="9" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
 
@@ -126,8 +139,10 @@
             </div>
 
             <div class="row mt-4">
-                <h1 id="winIndicator" class="text-center"></h1>
+                <h2 id="winIndicator" class="text-center text-info"></h2>
             </div>
+            <h2 id="turnIndicator" class="text-center text-info">Please enter your names in the textboxes.</h2>
+            <button id="restart" type="submit" class="btn btn-info" onclick="restart()">Restart</button>
         </div>
     </div>
 
@@ -140,14 +155,14 @@
         function changeImage(imageId) {
             console.log(document.getElementById(imageId).src);
             
-            if(document.getElementById(imageId).src.includes("white.png") && turn % 2 == 1){
-                turnIndicator.innerHTML = "It is currently " + playerName2 + "'s turn."
+            if(document.getElementById(imageId).src.includes("blank.png") && turn % 2 == 1){
+                turnIndicator.innerHTML = "It is currently " + playerName2 + "'s turn (O)."
                 document.getElementById(imageId).src="x.png";
                 winCondition()
                 turn += 1;
       
-            } else if(document.getElementById(imageId).src.includes("white.png") && turn % 2 == 0){
-                turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn."
+            } else if(document.getElementById(imageId).src.includes("blank.png") && turn % 2 == 0){
+                turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn (X)."
                 document.getElementById(imageId).src="o.png";
                 winCondition()
                 turn += 1;
@@ -156,18 +171,24 @@
         }
 
         function inputName(){
-            // console.log("inputName");
-            event.preventDefault()
+            console.log("registered name")
+            // event.preventDefault()
             playerName1 = document.getElementById("name1").value
             playerName2 = document.getElementById("name2").value
-            
             document.getElementById("submitButton").classList.add("invisible")
 
             labelName1.innerHTML = "Player 1: " + playerName1
             labelName2.innerHTML = "Player 2: " + playerName2
+            turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn (X)"
             document.getElementById("name1").classList.add("invisible")
             document.getElementById("name2").classList.add("invisible")
 
+        }function restart(){
+            turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn (X)"
+            turn = 1;
+            for (let i = 1; i <= 9; i++) {
+                document.getElementById(i).src = "blank.png";
+            }
         }
 
         function winCondition() {
@@ -241,6 +262,7 @@
 
             } else if (turn == 9){
                 winIndicator.innerHTML = "The game is a tie."
+                turnIndicator.innerHTML = ""
             }
 
         }
