@@ -28,120 +28,104 @@
 <body>
     <div class="vertical-center bg-dark">
         <div class="grid">
-            <div class="row">
+            <div class="row mb-5">
                 <h1 class="text-center text-info">Tic Tac Toe</h1>
             </div>
-
             <div class="row">
                 <div class="col-3">
                 </div>
-                
                 <div class="col-3">
                     <label id="labelName1" class="h3 text-info">Player 1(X)</label>
                 </div>
-                
                 <div class="col-3">
                     <label id="labelName2" class="h3 text-info">Player 2(O)</label>
                 </div>
                 <div class="col-3">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-3">
                 </div>
-
                 <div class="col-3">
                     <input id="name1" class="form-control" type="text" placeholder="Input your name">
                 </div>
-
                 <div class="col-3">
-                    <input id="name1" class="form-control" type="text" placeholder="Input your name">
+                    <input id="name2" class="form-control" type="text" placeholder="Input your name">
                 </div>
-                
                 <div class="col-3">
-                    <button id="submitButton" type="submit" class="btn btn-info" onclick="inputName();">Submit</button>
+                    <button id="submitButton" type="submit" class="btn btn-info" onclick="inputName()">Submit</button>
                 </div>
             </div>
 
             <div class="row mt-5">
+                <h2 id="turnIndicator" class="text-center text-info">Please enter your names in the textboxes.</h2>
                 <div class="col-3">
                 </div>
-                
                 <div class="col-2 text-center">
-                        <a style="cursor:pointer" onclick="changeImage('1')">
-                            <img src="blank.png" id="1" class="img-thumbnail border border-3 border-info rounded bg-dark">
-                        </a>
+                    <a style="cursor:pointer" onclick="changeImage('1')">
+                        <img src="blank.png" id="1" class="img-thumbnail border border-3 border-info rounded bg-dark">
+                    </a>
                 </div>
-
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('2')">
                         <img src="blank.png" id="2" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('3')">
                         <img src="blank.png" id="3" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
-                <div class="col-3"></div>
+                <div class="col-3">
+                </div>
             </div>
 
             <div class="row mt-4">
-                <div class="col-3"></div>
-
-                <div class="col-2 text-center border-3 rounded">
-                        <a style="cursor:pointer" onclick="changeImage('4')">
-                            <img src="blank.png" id="4" class="img-thumbnail border border-3 border-info rounded bg-dark">
-                        </a>
+                <div class="col-3">
                 </div>
-
+                <div class="col-2 text-center border-3 rounded">
+                    <a style="cursor:pointer" onclick="changeImage('4')">
+                        <img src="blank.png" id="4" class="img-thumbnail border border-3 border-info rounded bg-dark">
+                    </a>
+                </div>
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('5')">
                         <img src="blank.png" id="5" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('6')">
                         <img src="blank.png" id="6" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
-                <div class="col-3"></div>
-                
+                <div class="col-3">
+                </div>
             </div>
 
             <div class="row mt-4">
                 <div class="col-3"></div>
-
                 <div class="col-2 text-center border-3 rounded">
-                        <a style="cursor:pointer" onclick="changeImage('7')">
-                            <img src="blank.png" id="7" class="img-thumbnail border border-3 border-info rounded bg-dark">
-                        </a>
+                    <a style="cursor:pointer" onclick="changeImage('7')">
+                        <img src="blank.png" id="7" class="img-thumbnail border border-3 border-info rounded bg-dark">
+                    </a>
                 </div>
-
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('8')">
                         <img src="blank.png" id="8" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
                 <div class="col-2 text-center border-3 rounded">
                     <a style="cursor:pointer" onclick="changeImage('9')">
                         <img src="blank.png" id="9" class="img-thumbnail border border-3 border-info rounded bg-dark">
                     </a>
                 </div>
-
                 <div class="col-3"></div>
             </div>
 
             <div class="row mt-4">
                 <h2 id="winIndicator" class="text-center text-info"></h2>
             </div>
-            <h2 id="turnIndicator" class="text-center text-info">Please enter your names in the textboxes.</h2>
+            <!-- <h2 id="turnIndicator" class="text-center text-info">Please enter your names in the textboxes.</h2> -->
             <button id="restart" type="submit" class="btn btn-info" onclick="restart()">Restart</button>
         </div>
     </div>
@@ -167,7 +151,6 @@
                 winCondition()
                 turn += 1;
             }
-
         }
 
         function inputName(){
@@ -182,9 +165,11 @@
             turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn (X)"
             document.getElementById("name1").classList.add("invisible")
             document.getElementById("name2").classList.add("invisible")
-
-        }function restart(){
+        }
+        
+        function restart(){
             turnIndicator.innerHTML = "It is currently " + playerName1 + "'s turn (X)"
+            winIndicator.innerHTML = ""
             turn = 1;
             for (let i = 1; i <= 9; i++) {
                 document.getElementById(i).src = "blank.png";
@@ -266,9 +251,6 @@
             }
 
         }
-
-      
     </script>
-
 </body>
 </html>
